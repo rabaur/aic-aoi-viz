@@ -1,0 +1,2658 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+    <meta charset="utf-8" >
+    <link rel="canonical" href="https://ai.ethz.ch/about-us/people/doctoral-students.html">
+<link rel="alternate" href="https://ai.ethz.ch/about-us/people/doctoral-students.html" hreflang="en">
+<script>
+
+    // promise polyfill
+    !function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t():"function"==typeof define&&define.amd?define(t):t()}(0,function(){"use strict";function e(e){var t=this.constructor;return this.then(function(n){return t.resolve(e()).then(function(){return n})},function(n){return t.resolve(e()).then(function(){return t.reject(n)})})}function t(e){return new this(function(t,n){function o(e,n){if(n&&("object"==typeof n||"function"==typeof n)){var f=n.then;if("function"==typeof f)return void f.call(n,function(t){o(e,t)},function(n){r[e]={status:"rejected",reason:n},0==--i&&t(r)})}r[e]={status:"fulfilled",value:n},0==--i&&t(r)}if(!e||"undefined"==typeof e.length)return n(new TypeError(typeof e+" "+e+" is not iterable(cannot read property Symbol(Symbol.iterator))"));var r=Array.prototype.slice.call(e);if(0===r.length)return t([]);for(var i=r.length,f=0;r.length>f;f++)o(f,r[f])})}function n(e){return!(!e||"undefined"==typeof e.length)}function o(){}function r(e){if(!(this instanceof r))throw new TypeError("Promises must be constructed via new");if("function"!=typeof e)throw new TypeError("not a function");this._state=0,this._handled=!1,this._value=undefined,this._deferreds=[],l(e,this)}function i(e,t){for(;3===e._state;)e=e._value;0!==e._state?(e._handled=!0,r._immediateFn(function(){var n=1===e._state?t.onFulfilled:t.onRejected;if(null!==n){var o;try{o=n(e._value)}catch(r){return void u(t.promise,r)}f(t.promise,o)}else(1===e._state?f:u)(t.promise,e._value)})):e._deferreds.push(t)}function f(e,t){try{if(t===e)throw new TypeError("A promise cannot be resolved with itself.");if(t&&("object"==typeof t||"function"==typeof t)){var n=t.then;if(t instanceof r)return e._state=3,e._value=t,void c(e);if("function"==typeof n)return void l(function(e,t){return function(){e.apply(t,arguments)}}(n,t),e)}e._state=1,e._value=t,c(e)}catch(o){u(e,o)}}function u(e,t){e._state=2,e._value=t,c(e)}function c(e){2===e._state&&0===e._deferreds.length&&r._immediateFn(function(){e._handled||r._unhandledRejectionFn(e._value)});for(var t=0,n=e._deferreds.length;n>t;t++)i(e,e._deferreds[t]);e._deferreds=null}function l(e,t){var n=!1;try{e(function(e){n||(n=!0,f(t,e))},function(e){n||(n=!0,u(t,e))})}catch(o){if(n)return;n=!0,u(t,o)}}var a=setTimeout;r.prototype["catch"]=function(e){return this.then(null,e)},r.prototype.then=function(e,t){var n=new this.constructor(o);return i(this,new function(e,t,n){this.onFulfilled="function"==typeof e?e:null,this.onRejected="function"==typeof t?t:null,this.promise=n}(e,t,n)),n},r.prototype["finally"]=e,r.all=function(e){return new r(function(t,o){function r(e,n){try{if(n&&("object"==typeof n||"function"==typeof n)){var u=n.then;if("function"==typeof u)return void u.call(n,function(t){r(e,t)},o)}i[e]=n,0==--f&&t(i)}catch(c){o(c)}}if(!n(e))return o(new TypeError("Promise.all accepts an array"));var i=Array.prototype.slice.call(e);if(0===i.length)return t([]);for(var f=i.length,u=0;i.length>u;u++)r(u,i[u])})},r.allSettled=t,r.resolve=function(e){return e&&"object"==typeof e&&e.constructor===r?e:new r(function(t){t(e)})},r.reject=function(e){return new r(function(t,n){n(e)})},r.race=function(e){return new r(function(t,o){if(!n(e))return o(new TypeError("Promise.race accepts an array"));for(var i=0,f=e.length;f>i;i++)r.resolve(e[i]).then(t,o)})},r._immediateFn="function"==typeof setImmediate&&function(e){setImmediate(e)}||function(e){a(e,0)},r._unhandledRejectionFn=function(e){void 0!==console&&console&&console.warn("Possible Unhandled Promise Rejection:",e)};var s=function(){if("undefined"!=typeof self)return self;if("undefined"!=typeof window)return window;if("undefined"!=typeof global)return global;throw Error("unable to locate global object")}();"function"!=typeof s.Promise?s.Promise=r:s.Promise.prototype["finally"]?s.Promise.allSettled||(s.Promise.allSettled=t):s.Promise.prototype["finally"]=e});
+    
+    let storageKeySuffix = '';
+    if (window.location.pathname.endsWith('.fr.html')) {
+      storageKeySuffix = '.fr';
+    } else if (window.location.pathname.endsWith('.it.html')) {
+      storageKeySuffix = '.it';
+    }
+
+    const currentPath = '/about-us/people/doctoral-students';
+
+    window.ethSitemap = {};
+
+    window.ethSitemap.storageKey = '/content/specialinterest/infk/center-ai/en' + storageKeySuffix;
+
+    window.ethSitemap.loaded = new Promise(function (resolve, reject) {
+      const xmlhttp = new XMLHttpRequest();
+
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+          if (xmlhttp.status == 200) {
+            if (xmlhttp.responseText) {
+              window.ethSitemap.data = JSON.parse(xmlhttp.responseText);
+              resolve(window.ethSitemap.data);
+              window.sessionStorage.setItem(window.ethSitemap.storageKey, xmlhttp.responseText)
+            }
+          } else {
+            reject();
+          }
+        }
+      };
+
+      xmlhttp.open("GET", "/.navigation" + storageKeySuffix + ".json", true);
+      xmlhttp.send();
+    });
+
+  </script>
+<script>    
+    
+    const accountType = window.localStorage.getItem('ch.ethz.user.type');
+
+    var isInternal = window.sessionStorage.getItem('ch.ethz.user.isInternal');
+    if (!isInternal) {
+    	fetch("/bin/ethz/base/stats").then((response) => response.json()).then((data) => {
+    		isInternal = data.is_internal;
+    	    window.sessionStorage.setItem('ch.ethz.user.isInternal', isInternal);
+    	});
+    }
+    
+    const isAuthor = this.getCookieValue('is_author');
+	
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+    });
+
+    dataLayer.push({
+        'event': 'pageData',
+        'ch1': 'about-us', 
+        'ch2': 'people', 
+        'ch3': 'doctoral-students', 
+        'page_title': 'Doctoral Fellows',
+        'internal_page_path': '/about-us/people/doctoral-students',
+        'logged_in': 'false',
+        'account_type': accountType ? accountType : '', 
+        'is_author': isAuthor != '' ? 'true' : 'false',
+        'section': 'ETH AI Center ',
+        'institut': '',
+        'group': '',
+        'is_internal': isInternal == 'true' ? 'true' : 'false',
+    });
+    
+    function getCookieValue(cname) {
+        var name = cname + '=';
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return '';
+      };
+    </script>
+    
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5KC3PX6');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    
+<meta property="og:url" content="https://ai.ethz.ch/about-us/people/doctoral-students.html" >
+    <meta property="og:title" content="Doctoral Fellows" >
+    <meta property="og:site_name" content="ETH AI Center  " >
+    <meta property="og:image" content="https://ethz.ch/etc/designs/ethz/img/header/eth_default_og.jpg" >
+    <meta property="og:image:alt" content="" ><meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:site" content="" />
+            <meta name="twitter:creator" content="">
+            <meta name="twitter:title" content="Doctoral Fellows" />
+            <meta name="twitter:image" content="https://ethz.ch/etc/designs/ethz/img/header/eth_default_og.jpg" />
+            <meta name="twitter:image:alt" content="" />
+        <meta name="Systemueberwachung" content="ETHZ" >
+    <meta name="ethz_lmd" content="2025-05-22T11:28:45.134Z" >
+    
+    
+    <meta name="pagetype" content="web" >
+
+
+    
+
+
+
+
+<link rel="stylesheet" href="/etc/designs/ethz/css.css" type="text/css">
+<script src="/etc/designs/ethz/js/default.js"></script>
+
+
+<meta name="msapplication-TileColor" content="#215CAF">
+    <meta name="theme-color" content="#215CAF">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#215CAF-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="icon" sizes="192x192" href="https://ethz.ch/etc/designs/ethz/img/icons/ETH-APP-Icons-Theme-white/192-xxxhpdi.png">
+    <meta name="msapplication-TileImage" content="https://ethz.ch/etc/designs/ethz/img/icons/ETH-APP-Icons-Theme-white/144-xxhdpi.png">
+
+    <meta name="content-language" content="en">
+    
+    
+
+<title>Doctoral Fellows – ETH AI Center   | ETH Zurich</title>
+<meta name="apple-mobile-web-app-title" content="Doctoral Fellows – ETH AI Center   | ETH Zurich"/>
+
+</head><body class="widepage eth-blue">
+
+    <!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5KC3PX6"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+<!-- skipLinks -->
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="skipLinksDiv">
+        <ul id="skipLinks">
+                    
+            <li data-order="0"><a accesskey="0" href="/" class="accesskey" title="Directly go to the homepage">Homepage</a></li>
+            <li data-order="1"><a accesskey="1" href="#navList" class="accesskey" title="Directly go to the navigation">Navigation</a></li>
+            <li data-order="2"><a accesskey="2" href="https://ai.ethz.ch/utils/search.html" class="accesskey" title="Directly go to the search">Search</a></li>
+            <li data-order="3"><a accesskey="3" href="#content" class="accesskey" title="Directly go to the content">Content</a></li>
+            <li data-order="4"><a accesskey="4" href="#footer" class="accesskey" title="Directly go to the footer">Footer</a></li>
+
+            
+            
+              
+                  
+              
+              
+            
+            
+                <li data-order="5">
+                    <a accesskey="5" href="#footer-contact" class="accesskey" title="Directly go to the contact">
+                      Contact
+                    </a>
+                </li>
+            
+
+            
+            
+                                    
+	                    <li data-order="6"><a accesskey="6" href="/footer/sitemap.html" class="accesskey" title="Sitemap">Sitemap</a></li>
+                
+            
+            
+        </ul>
+</div>
+
+<div class="site-wrapper">
+        <!-- header -->
+        <header class="site-header header--with-department-breadcrumb">
+    
+<div id="userStatusBar" style="display: none;"></div>
+	<script>
+	    jQuery(document).ready(function loadStatusbar() {
+	      var statusbar = $('#userStatusBar');
+	      if (!ETHZ_Design.Impersonation.isImpersonationOverlayOpen(statusbar)) {
+	          var sbLoaded = $.ajax({
+	              type:     'GET',
+	              dataType: 'HTML',
+	              cache:    false,
+	              url:      '/about-us/people/doctoral-students/_jcr_content.statusbar.html',
+	              success:  function (response) {          
+	                  if (response) {
+	                    if (response.lastIndexOf("</" + "html" + ">") != -1) {
+	                        // We got a complete HTML document -> replace whole document
+	                        document.open("text/html","replace");
+	                        document.write(response);
+	                        document.close();
+	                      } else {
+	                          statusbar.html(response);
+	                          ETHZ_Design.DropDown.register(statusbar);
+	                          ETHZ_Design.Impersonation.register(statusbar);
+	  
+	                          $('body').addClass('loggedin');
+	                          statusbar.show();
+	                          
+	                          // Remove the login link when logged in
+	                          $('a.login').remove();
+	
+	                          eth.mobileNavPosition();
+	                      }
+	                  }            
+	                },
+	                    
+	                
+	
+	          });
+	            
+	      }
+	      
+	    });
+	</script>
+<div class="header__logos header__container">
+        <a href="https://ethz.ch/en.html" title="ETH Zurich homepage">
+            <svg viewBox="0 0 120 20" xmlns="http://www.w3.org/2000/svg" class="main-eth-logo" aria-label="ETH homepage">
+    <path d="M43.6892 7.59685H39.3218L40.8555 0H3.90295L0 19.6252H14.7315L15.7334 14.5606H7.02833L7.52612 12.0283H16.2369L17.1209 7.59685H8.43034L8.92687 5.06457H22.7592L19.8638 19.6252H25.8707L28.7649 5.06457H33.8077L30.9135 19.6252H36.9665L38.4642 12.0283H42.8303L41.3338 19.6252H47.3577L51.2632 0H45.2229L43.6892 7.59685ZM69.4622 2.53228H71.4717L71.9695 0H69.9695L69.4622 2.53228ZM74.616 2.53228H76.6267L77.1232 0H75.1232L74.616 2.53228ZM93.4111 2.53228H95.4205L95.9196 0H93.9183L93.4111 2.53228ZM103.47 6.27247C99.9631 6.27247 97.5024 8.76677 96.7148 13.1172C96.5907 13.7981 96.5275 14.4888 96.5258 15.181C96.5258 18.1527 98.3109 20 101.189 20C102.013 20.0022 102.829 19.8372 103.588 19.515C104.347 19.1928 105.033 18.7199 105.606 18.1248L105.623 18.1058L104.509 16.7333L104.489 16.7093L104.467 16.7321C104.087 17.2105 103.604 17.597 103.055 17.8628C102.506 18.1287 101.905 18.2671 101.295 18.2679C99.9234 18.2679 98.4571 17.4411 98.4571 15.1266C98.4621 14.4552 98.5331 13.786 98.6688 13.1286C98.8751 11.7182 99.4666 10.3928 100.378 9.29981C100.745 8.89298 101.193 8.56784 101.694 8.34522C102.194 8.1226 102.734 8.00742 103.281 8.00708C103.806 7.9833 104.326 8.10937 104.782 8.37067C105.238 8.63197 105.611 9.0178 105.858 9.4834L105.874 9.50999L107.293 8.29956L107.313 8.28183L107.298 8.26031C106.89 7.62018 106.321 7.09939 105.649 6.75041C104.977 6.40142 104.225 6.23657 103.47 6.27247ZM116.295 5.98822C115.59 5.9532 114.886 6.07022 114.23 6.33141C113.573 6.59261 112.98 6.99193 112.49 7.50252L113.998 0H112.054L108.15 19.6252H110.093L111.714 11.3807C112.408 7.90642 115.092 7.73043 115.621 7.73043C115.937 7.69809 116.256 7.73604 116.555 7.84158C116.855 7.94713 117.128 8.11768 117.354 8.3411C117.581 8.56453 117.755 8.83536 117.866 9.13432C117.977 9.43329 118.02 9.75306 117.994 10.0709C117.984 10.4893 117.939 10.9062 117.858 11.3168L116.209 19.6252H118.15L119.855 11.1364C119.943 10.6954 119.989 10.2471 119.991 9.79741C120.026 9.29629 119.955 8.79341 119.783 8.32176C119.611 7.85011 119.342 7.42034 118.993 7.06064C118.644 6.70095 118.223 6.41946 117.758 6.23464C117.293 6.04981 116.795 5.96584 116.295 5.98822ZM90.0967 19.5929L90.0904 19.6258H92.0066L94.6215 6.33134H92.7375L90.0967 19.5929ZM54.9538 8.19447L54.9481 8.23056H61.4522L52.8769 18.021L52.8731 18.0261L52.5511 19.6258H61.7868L62.1503 17.7266H55.2462L63.8466 7.93618L63.8504 7.92985L64.1736 6.33134H55.3129L54.9538 8.19447ZM86.9064 6.16928C86.2145 6.15103 85.5279 6.29363 84.8999 6.58596C84.272 6.87828 83.7198 7.31243 83.2864 7.85451L83.5838 6.3611L83.5888 6.33134H81.6985L79.0854 19.5929L79.0803 19.6258H80.999L82.597 11.4909C83.006 9.4049 84.5932 7.88996 86.3739 7.88996C86.7328 7.88131 87.0882 7.96143 87.4089 8.12327C87.7297 8.28511 88.0059 8.52371 88.2133 8.81805L88.2322 8.8421L89.7879 7.43415L89.7728 7.41516C89.4206 7.00234 88.9794 6.67558 88.4828 6.4597C87.9861 6.24383 87.447 6.1445 86.9064 6.16928ZM75.3318 6.33134H77.275L77.27 6.363L74.6588 19.6258H72.7678L72.7741 19.5929L73.0243 18.2128C72.5408 18.7377 71.9491 19.1504 71.2906 19.422C70.6321 19.6935 69.9226 19.8176 69.2114 19.7854C68.7188 19.8075 68.227 19.7247 67.7685 19.5423C67.31 19.3599 66.8951 19.0821 66.5511 18.727C66.2071 18.372 65.9418 17.9479 65.7726 17.4825C65.6033 17.0171 65.5341 16.521 65.5694 16.0268C65.5748 15.6225 65.6206 15.2198 65.7061 14.8246L65.7282 14.7043L67.3803 6.33134H69.2978L67.6677 14.5283C67.5904 14.9334 67.5468 15.3442 67.5372 15.7565C67.5127 16.0718 67.5576 16.3887 67.6687 16.6847C67.7798 16.9806 67.9545 17.2483 68.1802 17.4688C68.406 17.6892 68.6773 17.857 68.9749 17.9602C69.2724 18.0635 69.589 18.0995 69.902 18.0659C70.4219 18.0659 73.0457 17.8912 73.7306 14.4619L75.3318 6.33134Z"/>
+</svg> </a>
+        <div class="header__headlines">            
+            <h2 class="header__headline--big" aria-label="Header &lt;span&gt;ETH AI Center &amp;nbsp;&lt;/span&gt;
+">
+                <a href="/" title="Home">
+                    <span>ETH AI Center &nbsp;</span>
+</a>
+            </h2>
+        </div>
+    </div>
+
+    <div id="navTopRoot" class="header__nav-primary eth-blue">
+    <div class="header__navbar header__container">
+        <nav id="nav-primary" aria-labelledby="header__nav-primary-label" class="nav-primary js-nav-primary">
+            <h3 id="header__nav-primary-label" class="hidden">Main Navigation</h3>
+            <button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="nav-primary--inner" class="header__mobile-nav-trigger header__mobile-only js-header__mobile-nav-trigger">
+                <span aria-hidden="true" class="header__mobile-nav-icon"></span>
+                Menu</button>
+            <div id="nav-primary--inner" data-init="mainNav" class="header__nav-level header__nav-level--root js-header__nav-level--root">
+                <!-- navigation -->
+<ul id="navList" is="vue:main-nav" current="navitem3851766761">
+    <li id="navitem4178150956" class="header__mobile-only to-homepage">
+              <a href="/">
+                Homepage</a>
+            </li>
+        <li id="navitem671209825" data-groupCodes="" class="">
+          <a href="/about-us.html">
+              About Us</a>
+        </li>
+        <li id="navitem2995965470" data-groupCodes="" class="">
+          <a href="/research.html">
+              Research</a>
+        </li>
+        <li id="navitem3474017889" data-groupCodes="" class="">
+          <a href="/industry.html">
+              Industry</a>
+        </li>
+        <li id="navitem4243907800" data-groupCodes="" class="">
+          <a href="/entrepreneurship.html">
+              Entrepreneurship</a>
+        </li>
+        <li id="navitem382724997" data-groupCodes="" class="">
+          <a href="/education.html">
+              Education</a>
+        </li>
+        </ul><div class="header__mobile-only">
+                        <hr>
+                        <h3 class="header__nav-primary-title">Services</h3>
+                        <ul>
+        <li>
+        <a href="https://ethz.ch/students/en.html" title="">Student portal</a>
+    </li>
+<li>
+        <a href="https://www.alumni.ethz.ch/en/" title="">Alumni association</a>
+    </li>
+<li>
+            <a href="https://ethz.ch/staffnet/en.html" title="">
+                Staffnet</a>
+        </li>
+        <li>
+                <a class="login footer__login-link icon-before icon-before--lock" href="/login/en.html?resource=%2Fcontent%2Fspecialinterest%2Finfk%2Fcenter-ai%2Fen%2Fabout-us%2Fpeople%2Fdoctoral-students.html" title="Login with ETH user account">
+        <span class="footer__login-text">Login</span>
+    </a>
+</li>
+        </ul>
+</div>
+                </div>
+        </nav>
+        <div class="header__search-trigger no_translate">
+    <h3 class="screenreader">Search</h3>
+    <div
+      id="search-app"
+      data-init="searchApp"
+      data-is-overlay="true"
+      data-search-page-link="/utils/search.html"
+      data-location-page-link="/utils/location.html"
+      data-api-url="/bin/ethz/search"
+      data-current-site-supported-langs='["en","de"]'
+      data-is-main-site="false"
+      data-all-sites-supported-langs='["de","en","fr","it"]'
+      data-most-searched-quick-links='["ETHIS", "Jobs", "Scholarship", "PhD", "Admission", "Application"]'
+      data-locale="htmlElement">
+    </div>
+</div>
+
+<div class="header__search-link-container no_translate">
+  <a class="header__search-link icon-before icon-before--search" href="/utils/search.html"></a>
+</div><div class="header__language header__mobile-only">
+            <span class="current-lang">
+            EN</span>
+    </div>
+    </div>
+</div><!-- navigation -->
+    <div class="header__nav-meta header__desktop-only">
+        <div class="header__container">
+            <nav aria-labelledby="header__departments-title" class="header__departments">
+                <h3 id="header__departments-title" class="hidden">
+                    Departments</h3>
+                <ul>
+                    <li class="item--organization">
+                        <a href="https://ethz.ch/en.html" title="ETH Zurich homepage" class="icon-after icon-after--chevron_right">
+                            ETH Zurich</a>
+                    </li>
+                    <!-- breadcrumb -->
+                            <li>
+        <a title="" href="/" class="">
+            ETH AI Center </a>
+    </li>
+</ul>
+            </nav>
+            <nav aria-labelledby="header__services-title" class="header__services">
+                <h3 id="header__services-title" class="hidden">Language Selection</h3>
+                <ul>
+                    <li>
+                        <span class="current-lang">
+            English</span>
+    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    
+    
+</header><!-- content -->
+        <section id="content" class="site-content">
+            <!-- breadcrumb -->
+            
+	
+	    
+	        <nav class="rs_skip breadcrumb breadcrumb--text-width" role="navigation" aria-label="Breadcrumb">
+	            <div class="breadcrumb-inner">
+	                <h3 id="breadcrumb-heading" class="visually-hidden">
+	                    You are here
+	                </h3>
+	                <ul>
+	                    <li>
+	                        <a href="/">
+	                            Homepage
+	                        </a>
+	                        <span aria-hidden="true" class="material-icons">chevron_right</span>
+	                    </li>
+	                    
+	                        <li role="presentation">
+	                          
+	                              <a href="/about-us.html">
+	                                  About Us
+	                              </a>
+	                              <span aria-hidden="true" class="material-icons">chevron_right</span>
+	                          
+	                          
+	                        </li>
+	                    
+	                        <li role="presentation">
+	                          
+	                              <a href="/about-us/people.html">
+	                                  People
+	                              </a>
+	                              <span aria-hidden="true" class="material-icons">chevron_right</span>
+	                          
+	                          
+	                        </li>
+	                    
+	                        <li role="presentation">
+	                          
+	                          
+	                              <a href="#" aria-current="page">Doctoral Fellows</a>
+	                          
+	                        </li>
+	                    
+	                </ul>
+	            </div>
+	        </nav>
+	    
+	
+
+<div id="contentContainer" class="site-content__wrapper site-content--wide site-content--with-sidebar">
+                <!-- START main content -->
+                <section class="content-main" id="contentMain">
+                    <h1>Doctoral Fellows</h1>
+<a id="mainContent"></a>
+
+    <!-- lead -->
+    <!-- page images -->
+    <!-- children nav -->
+    <div class="childrenNav children basecomponent">
+    
+
+</div>
+<!-- parsys -->
+    <div class="par parsys basecomponent"><div class="par parsys basecomponent contains-twocolumn contains-line contains-textimage">
+
+<a id="par_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first ">
+            <div class="text-image  cq-dd-image">
+                
+                
+                <p>Doctoral students who are listed here are recipients of the highly competitive ETH AI Center <a href="/education/phd-and-postdoc-programs.html#par_textimage_1068285857" class="eth-link">Doctoral Fellowship</a>. They have two mentors from the ETH AI Center faculty and are embedded with their respective research groups. The goal is to advance interdisciplinary AI research across discipline and department boundaries.</p> 
+<p>&nbsp;</p>
+            </div>
+        </div>
+    
+    
+
+</div>
+<a id="par_twocolumn" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Afra Amini" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn/par_left/textimage/image.imageformat.text50percent.1842958797.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Afra Amini</b></p> 
+<p><a href="/about-us/people/afra-amini.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>natural language processing, social science, machine learning, deep learning</p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_right_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Alice Bizeul" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn/par_right/textimage/image.imageformat.text50percent.187279962.png"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Alice Bizeul</b><br> </p> 
+<p><a href="/about-us/people/alice-bizeul.html" class="eth-link">More details</a><br> </p> 
+<p>&nbsp;</p> 
+<p>probabilistic machine learning, representation learning, medical applications</p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+<a id="par_twocolumn_1636379896" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Anej Svete" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1636379896/par_left/textimage/image.imageformat.text50percent.84524153.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Anej Svete</b></p> 
+<p><a href="https://ml.inf.ethz.ch/people/person-detail.MjgwMDQw.TGlzdC8xODA3LC0xNzg2MjE4NDI4.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>natural language processing, formal language theory, language modelling, representation learning, computational genomics</p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_right_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Anh Duong Vo" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1636379896/par_right/textimage/image.imageformat.text50percent.954610885.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Anh Duong Vo</b></p> 
+<p><a href="/about-us/people/anhduong-vo.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>neuroscience, human-computer interaction, machine learning, modeling, eeg, eye tracking</p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+<a id="par_twocolumn_1313899082" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Artur Goldman" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1313899082/par_left/textimage/image.imageformat.text50percent.107769344.jpg"/>
+			</figure>
+        
+                
+                <p><b>Artur Goldman</b></p>
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.MzIzNjAx.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p>
+<p>&nbsp;</p>
+<p>probabilistic machine learning, statistics, systems biology<br>
+</p>
+
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_right_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Barna Pasztor" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1313899082/par_right/textimage/image.imageformat.text50percent.1737028759.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Barna Pasztor</b></p>
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.MjUzNjkz.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p>
+<p>&nbsp;</p>
+<p>machine learning, artificial intelligence, multi-agent reinforcement learning, complex systems, sociology, economics</p>
+
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+<a id="par_twocolumn_834227689" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Bogdan Raonic" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_834227689/par_left/textimage/image.imageformat.text50percent.1740738001.jpg"/>
+			</figure>
+        
+                
+                <p><b>Bogdan Raonic</b></p> 
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.Mjk1NTU1.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>deep learning, scientific computing, AI for science, neural operators, physics-informed machine learning</p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_right_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Boqi Chen" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_834227689/par_right/textimage/image.imageformat.text50percent.254765303.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Boqi Chen</b></p> 
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.MjgwMDYy.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>machine learning, computer vision, computational pathology</p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+<a id="par_twocolumn_840727018" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Chehao Li" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_840727018/par_left/textimage/image.imageformat.text50percent.1580718671.jpg"/>
+			</figure>
+        
+                
+                <p><b>Botao Ye</b></p> 
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.MzM0NzE1.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>computer vision, 3D generation, scene reconstruction, robotics</p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_right_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Chehao Li" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_840727018/par_right/textimage/image.imageformat.text50percent.1584171359.png"/>
+			</figure>
+        
+                
+                <p><b>Chenhao Li</b></p> 
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.MjgwMDcx.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>robot learning, reinforcement learning, legged in<a href="https://inf.ethz.ch/people/people-atoz/person-detail.MjgwMDcx.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">t</a>elligence,&nbsp;learning from demonstrations, model-based adaptation</p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+<a id="par_twocolumn_235954564" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Daniil Dmitriev" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_235954564/par_left/textimage/image.imageformat.text50percent.228647574.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Daniil Dmitriev</b></p> 
+<p><a href="/about-us/people/daniil-dmitriev.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>mathematics of data science, random matrices, high dimensional probability<br> </p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_right_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Elisabetta Fedele" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_235954564/par_right/textimage/image.imageformat.text50percent.1356367828.jpg"/>
+			</figure>
+        
+                
+                <p><b>Elisabetta Fedele</b></p>
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.Mjk2MjMx.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p>
+<p>&nbsp;</p>
+<p>3D scene understanding, 3D reconstruction, diffusion models</p>
+
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+<a id="par_twocolumn_1235298273" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Elvis Nava" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1235298273/par_left/textimage/image.imageformat.text50percent.1919616367.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Elvis Nava</b></p> 
+<p><a href="/about-us/people/elvis-nava.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>meta learning, representation learning, multi-modality, neuroscience, robotics<br> </p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_right_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Emanuele Palumbo" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1235298273/par_right/textimage/image.imageformat.text50percent.1353066882.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Emanuele Palumbo</b></p> 
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.MjUzMjg1.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>generative models, multimodal learning, representations learning, AI for health</p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+<a id="par_twocolumn_1793979532" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Ghjulia Sialelli" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1793979532/par_left/textimage/image.imageformat.text50percent.623493712.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Ghjulia Sialelli</b></p> 
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.MjYyMTU2.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>probabilistic deep learning, AI for sustainability, computer vision, explainability</p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_right_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Giulia Lanzilotta" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1793979532/par_right/textimage/image.imageformat.text50percent.1656064639.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Giulia Lanzilotta</b></p> 
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.MjYzODkz.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>biologically inspired learning, task-agnostic learning, measures of intelligence, continual learning, memorisation<a href="https://inf.ethz.ch/people/people-atoz/person-detail..MjYzODkz.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link"></a><br> </p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+<a id="par_twocolumn_1098446944" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Hehui Zheng" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1098446944/par_left/textimage/image.imageformat.text50percent.1957115539.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Hehui Zheng</b></p> 
+<p><a href="/about-us/people/hehui-zheng.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>vision-based reconstruction, soft robotics, physics-aware object tracking, machine learning</p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_right_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Ilyas Fatkullin" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1098446944/par_right/textimage/image.imageformat.text50percent.2118850082.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Ilyas Fatkhullin</b></p> 
+<p><a href="/about-us/people/ilyas-fatkhullin.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>large-scale optimization, reinforcement learning, federated learning<br> </p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+<a id="par_line_652846953" style="visibility:hidden"></a>
+        <div class="line basecomponent"><div class="teaserboxline ">
+    <div class="separator">
+        <hr>
+    </div>
+</div></div>
+<a id="par_twocolumn_952691255" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Jakub Macina" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_952691255/par_left/textimage/image.imageformat.text50percent.123943126.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Jakub Macina</b></p> 
+<p><a href="/about-us/people/jakub-macina.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>natural language processing, educational data science, discourse analysis, text generation, question generation</p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_right_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Javier Martinez" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_952691255/par_right/textimage/image.imageformat.text50percent.463415309.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Javier Martinez</b></p> 
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.MzEwOTc5.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>machine learning, healthcare, explainability, uncertainty quantification, causal inference</p> 
+<p>&nbsp;</p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+<a id="par_line_308292359" style="visibility:hidden"></a>
+        <div class="line basecomponent"><div class="teaserboxline ">
+    <div class="separator">
+        <hr>
+    </div>
+</div></div>
+<a id="par_twocolumn_806984741" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Javier Rando" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_806984741/par_left/textimage/image.imageformat.text50percent.1026469606.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Javier Rando</b></p> 
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.Mjk3MDgz.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p> 
+<p>natural language processing, large language models, safety, alignment, truthfulness</p> 
+<p>&nbsp;</p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_right_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Jelena Trisovic" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_806984741/par_right/textimage/image.imageformat.text50percent.1360611720.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Jelena Trisovic</b></p> 
+<p><a href="/about-us/people/jelena-trisovic.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>optimization, control, computer vision, reinforcement learning<br> </p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+<a id="par_twocolumn_1693654456" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Jiaoda Li" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1693654456/par_left/textimage/image.imageformat.text50percent.950967198.png"/>
+			</figure>
+        
+                
+                <p><b>Jiaoda Li</b></p> 
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.MjUyMTA3.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>natural language processing, machine learning</p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_right_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Johannes Weidenfeller" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1693654456/par_right/textimage/image.imageformat.text50percent.267844107.jpg"/>
+			</figure>
+        
+                
+                <p><b>Johannes Weidenfeller</b></p> 
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.MjUzNzM2.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>computer vision, machine learning, 3D scene reconstruction and understanding, generative models, virtual humans, AI for health and in the medical domain, applications in AR/VR</p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+<a id="par_twocolumn_776212580" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Junling Wang" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_776212580/par_left/textimage/image.imageformat.text50percent.1032635385.png"/>
+			</figure>
+        
+                
+                <p><b>Junling Wang</b></p> 
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.Mjk1Mjc2.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>natural language processing, large language models, human-computer interaction, machine learning, deep learning, educational data science</p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_right_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Karin Yu" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_776212580/par_right/textimage/image.imageformat.text50percent.831015719.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Karin Yu</b></p> 
+<p><a href="https://kaufmann.ibk.ethz.ch/people/staff/karin-yu.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>physics-informed machine learning, graph neural networks, structural engineering and design</p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+<a id="par_twocolumn_1613649739" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Kenza Amara" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1613649739/par_left/textimage/image.imageformat.text50percent.211409679.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Kenza Amara</b></p> 
+<p><a href="/about-us/people/kenza-amara.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>explainable AI, graph neural networks, graph theory, information retrieval, drug discovery, environmental sciences<br> </p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_right_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Konstantin Donhauser" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1613649739/par_right/textimage/image.imageformat.text50percent.328437654.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Konstantin Donhauser</b></p> 
+<p><a href="/about-us/people/konstantin-donhauser.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>machine learning (theory and reliability), non-parametric and high-dimensional statistics, optimisation<br> </p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+<a id="par_twocolumn_807021711" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Kristina Nikolic" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_807021711/par_left/textimage/image.imageformat.text50percent.1007832061.jpg"/>
+			</figure>
+        
+                
+                <p><b>Kristina Nikolić</b></p>
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.MzEyMjU5.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p>
+<p>&nbsp;</p>
+<p>safety, privacy, large language models, vision language models, alignment, robustness, trustworthiness<br>
+</p>
+
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_right_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Levi Lingsch" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_807021711/par_right/textimage/image.imageformat.text50percent.121611515.png"/>
+			</figure>
+        
+                
+                <p><b>Levi Lingsch</b></p>
+<p><a href="https://math.ethz.ch/utils/search.Mjk0MjI5.html?pagetype=people" class="eth-link">More details</a></p>
+<p>&nbsp;</p>
+<p>machine learning for scientific computing, neural operators, symbolic AI, tokenization for PDEs, weather and climate<br>
+</p>
+
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+<a id="par_twocolumn_1839846375" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Lucia Pezzetti" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1839846375/par_left/textimage/image.imageformat.text50percent.1765725809.jpg"/>
+			</figure>
+        
+                
+                <p><b>Lucia Pezzetti</b></p>
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.MzM0MDc2.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p>
+<p>&nbsp;</p>
+<p>machine learning, multi-agent reinforcement learning, optimization, bayesian statistics<br>
+</p>
+
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_right_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Malte Londschien" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1839846375/par_right/textimage/image.imageformat.text50percent.587264262.png"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Malte Londschien</b></p> 
+<p><a href="/about-us/people/malte-londschien.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>statistics, machine learning, distributional robustness, causality, bioinformatics<br> </p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+<a id="par_twocolumn_1740906034" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Manish Prajapat" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1740906034/par_left/textimage/image.imageformat.text50percent.498468220.png"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Manish Prajapat</b></p> 
+<p><a href="/about-us/people/manish-prajapat.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>reinforcement learning, controls, submodularity, bayesian Optimization, multi-agent learning<br> </p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_right_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Mike Michelis" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1740906034/par_right/textimage/image.imageformat.text50percent.1090963075.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Mike Michelis</b></p> 
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.Mjg5MzYy.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>physics-informed machine learning, computational design, numerical simulation, robotics<br> </p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+<a id="par_twocolumn_1353235733" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Paola Malsot" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1353235733/par_left/textimage/image.imageformat.text50percent.300378474.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Paola Malsot</b></p> 
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.MjI3Nzgy.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>statistics, machine learning, bioinformatics<br> </p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_right_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Pawel Czyz" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1353235733/par_right/textimage/image.imageformat.text50percent.1472585028.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Pawel Czyz</b></p> 
+<p><a href="/about-us/people/pawel-czyz.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>unsupervised learning, probabilistic machine learning, Bayesian statistics, computational geometry and topology, cancer research<br> </p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+<a id="par_twocolumn_1055341626" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Rapha&euml;l Baur" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1055341626/par_left/textimage/image.imageformat.text50percent.1608116898.jpg"/>
+			</figure>
+        
+                
+                <p><b>Raphaël Baur</b></p>
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.MjQ4MDc4.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p>
+<p>&nbsp;</p>
+<p>ai in architecture, human-ai collaboration, intelligence augmentation, reinforcement learning, probabilistic programming</p>
+
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_right_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Rene Zurbr&uuml;gg" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1055341626/par_right/textimage/image.imageformat.text50percent.1161874069.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>René Zurbrügg</b></p> 
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.MjI3MDU3.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>robotics, computer vision, embodied ai, object manipulation, scene understanding</p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+<a id="par_twocolumn_644464618" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Riccardo de Santis" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_644464618/par_left/textimage/image.imageformat.text50percent.56873378.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Riccardo De Santi</b></p>
+<p><a href="https://ml.inf.ethz.ch/people/person-detail.Mjc4OTcz.TGlzdC8xODA3LC0xNzg2MjE4NDI4.html" class="eth-link">More details</a></p>
+<p>&nbsp;</p>
+<p>algorithmic decision-making, reinforcement learning, diffusion models, automatic scientific discovery</p>
+
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_right_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Samantha Biegel" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_644464618/par_right/textimage/image.imageformat.text50percent.1295066092.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Samantha Biegel</b></p> 
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.MzA2MDIy.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>environmental data science, machine learning, explainability, computer vision, scientific discovery, climate &amp; ecosystem science</p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+<a id="par_twocolumn_1277412304" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Tifanny Portela" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1277412304/par_left/textimage/image.imageformat.text50percent.1356479254.jpg"/>
+			</figure>
+        
+                
+                <p><b>Tifanny Portela</b></p> 
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.MzQxMzk2.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>robotics, reinforcement learning, embodied AI, whole-body manipulation, computer vision</p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_right_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Vera Balmer" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1277412304/par_right/textimage/image.imageformat.text50percent.192997020.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Vera Balmer</b></p> 
+<p><a href="https://baug.ethz.ch/en/department/people/staff/personen-detail.MjI2MTQw.TGlzdC82NzksLTU1NTc1NDEwMQ==.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>physics-​informed machine learning, neural operators, bridge design and concrete structures<br> </p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+<a id="par_twocolumn_1913586515" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Vinzenz Thoma" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1913586515/par_left/textimage/image.imageformat.text50percent.456640168.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Vinzenz Thoma</b></p> 
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.MjM4ODg3.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>multi-agent reinforcement learning, market &amp; mechanism design, algorithmic game theory, machine learning<br> </p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_right_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Yarden As" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_1913586515/par_right/textimage/image.imageformat.text50percent.900678316.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Yarden As</b></p> 
+<p><a href="https://inf.ethz.ch/people/people-atoz/person-detail.MjY1NDY2.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>reinforcement learning, constrained markov decision processes, meta-learning and bayesian inference<br> </p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+<a id="par_line_1428227821" style="visibility:hidden"></a>
+        <div class="line basecomponent"><div class="teaserboxline ">
+    <div class="separator">
+        <hr>
+    </div>
+</div></div>
+<a id="par_twocolumn_63716906" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent">
+
+
+
+
+	<div class="twocolumns twocolumns--narrow">
+	    <div class="cols-2">
+	        <div class="box left contains-textimage">
+               
+               <div class="parsys basecomponent contains-textimage">
+
+<a id="par_left_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last clearfix">
+            <div class="text-image  cq-dd-image">
+                
+                
+                    <figure class="text-image__image text-image__image--large">
+        <img alt="Yunke Ao" src="/about-us/people/doctoral-students/_jcr_content/par/twocolumn_63716906/par_left/textimage/image.imageformat.text50percent.1555542896.jpg"/>
+			<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Jasmin Frei)</div>
+	  </figcaption>
+	</figure>
+        
+                
+                <p><b>Yunke Ao</b></p> 
+<p><a href="https://las.inf.ethz.ch/people/yunke-ao" class="eth-link">More details</a></p> 
+<p>&nbsp;</p> 
+<p>reinforcement learning, deep learning, robotics, optimal control, surgical planning<br> </p>
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	       </div>
+	       <div class="box right ">
+               
+               <div class="parsys basecomponent ">
+
+</div>
+	        </div>
+	    </div>
+	</div>
+
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+</div></div>
+<!-- Rightside Parsys -->
+    </section>
+                <!-- END main content -->           
+            </div>        
+        </section>
+
+        <div class="siblingNav sibling basecomponent"><div
+  id="sibling-nav"
+  data-init="siblingNav"
+  data-title-tag="h3">
+  </div></div>
+<!-- footer -->
+        <footer id="footer" class="site-footer">
+    <div class="footer__container">
+        <h2 class="visually-hidden">
+            Footer</h2>
+        <div class="footer__row-main">
+            <div class="footer__row-main__inner footer__row">
+                <div class="footer__search-and-social">
+                    <div class="footer__search no_translate" aria-labelledby="footer-search-heading" role="search">
+                        <h3 id="footer-search-heading" class="footer__section-title">
+                            Search</h3>
+                            <div class="site-search">
+                                <form action="/utils/search.html" method="GET" accept-charset="UTF-8">
+                                    <label for="searchinput" class="hidden">Keyword or person</label>
+                                    <input id="searchinput" class="searchinput" type="text" placeholder="Keyword or person" data-placeholder="Keyword or person" name="q" aria-required="false" />
+                                    <button type="submit" class="searchsubmit icon-before icon-before--search" aria-label="Search"></button>
+                                    <input type="hidden" name="language" value="en" />
+                                </form>
+                            </div>
+                        </div>
+                    <nav aria-labelledby="footer-social-heading" class="footer__social">
+                            <h3 id="footer-social-heading" class="footer__section-title">
+                                Follow us</h3>
+                            <ul class="social-icons">
+			                    <li>
+		                                <a href="https://www.linkedin.com/company/eth-ai-center/" class="social-icon" title="LinkedIn"><img src="https://ethz.ch/etc/designs/ethz/img/icons/svg/linkedin-white.svg" alt="LinkedIn"></a>
+		                                    </li>
+			                    <li>
+		                                <a href="https://X.com/ETH_AI_Center" class="social-icon" title="Twitter"><img src="https://ethz.ch/etc/designs/ethz/img/icons/svg/x-white.svg" alt="Twitter"></a>
+		                                    </li>
+			                    <li>
+		                                <a href="https://www.instagram.com/eth_ai_center/" class="social-icon" title="Instagram"><img src="https://ethz.ch/etc/designs/ethz/img/icons/svg/instagram-white.svg" alt="Instagram"></a>
+		                                    </li>
+			                    <li>
+		                                <a href="https://www.youtube.com/channel/UCnI53-DFFXpd40vMIjA_gyw" class="social-icon" title="YouTube"><img src="https://ethz.ch/etc/designs/ethz/img/icons/svg/youtube-white.svg" alt="YouTube"></a>
+		                                    </li>
+			                    </ul>
+                        </nav>
+                    </div>
+
+                <nav aria-labelledby="footer-services-heading" class="footer__services">
+	                  <h3 id="footer-services-heading" class="footer__section-title">
+	                      Services</h3>
+	                  <ul>
+        <li>
+        <a href="https://ethz.ch/students/en.html" title="">Student portal</a>
+    </li>
+<li>
+        <a href="https://www.alumni.ethz.ch/en/" title="">Alumni association</a>
+    </li>
+<li>
+            <a href="https://ethz.ch/staffnet/en.html" title="">
+                Staffnet</a>
+        </li>
+        <li>
+                <a class="login footer__login-link icon-before icon-before--lock" href="/login/en.html?resource=%2Fcontent%2Fspecialinterest%2Finfk%2Fcenter-ai%2Fen%2Fabout-us%2Fpeople%2Fdoctoral-students.html" title="Login with ETH user account">
+        <span class="footer__login-text">Login</span>
+    </a>
+</li>
+        </ul>
+</nav>
+                <div aria-labelledby="footer-contact" class="footer__contact">
+                        <h3 id="footer-contact" class="footer__section-title">
+                            Contact</h3>
+                        <div class="footer__row">
+                            <div class="footer__contact__main">
+                               <div class="contactBox contactbox basecomponent"><div class="contactbox__wrapper  is-first is-last contactbox__wrapper--manual">
+        <div class="contactbox__content">
+    <ul class="contactbox__list">
+            <li class="contactbox__item">
+                    <script type="text/javascript">eval(unescape('%64%6f%63%75%6d%65%6e%74%2e%77%72%69%74%65%28%27%3c%61%20%63%6c%61%73%73%3d%5c%22%65%74%68%2d%6c%69%6e%6b%20%68%61%73%2d%69%63%6f%6e%2d%62%65%66%6f%72%65%20%65%74%68%2d%6c%69%6e%6b%2d%2d%6e%6f%2d%75%6e%64%65%72%6c%69%6e%65%5c%22%20%68%72%65%66%3d%5c%22%6d%61%69%6c%74%6f%3a%69%6e%66%6f%40%61%69%2e%65%74%68%7a%2e%63%68%5c%22%20%74%69%74%6c%65%3d%5c%22%53%65%6e%64%20%65%6d%61%69%6c%5c%22%3e%3c%73%70%61%6e%20%63%6c%61%73%73%3d%5c%22%68%69%64%64%65%6e%5c%22%3e%45%6d%61%69%6c%3c%5c%2f%73%70%61%6e%3e%3c%73%70%61%6e%20%61%72%69%61%2d%68%69%64%64%65%6e%3d%5c%22%74%72%75%65%5c%22%20%63%6c%61%73%73%3d%5c%22%6d%61%74%65%72%69%61%6c%2d%69%63%6f%6e%73%5c%22%3e%65%6d%61%69%6c%3c%5c%2f%73%70%61%6e%3e%3c%73%70%61%6e%20%63%6c%61%73%73%3d%5c%22%75%6e%64%65%72%6c%69%6e%65%5c%22%3e%69%6e%66%6f%40%61%69%2e%65%74%68%7a%2e%63%68%3c%5c%2f%73%70%61%6e%3e%3c%5c%2f%61%3e%27%29'))</script></li>
+            </ul>
+    <p class="contactbox__information">
+            ETH AI Center<br>
+                    Andreasstrasse 5<br>
+                OAT X11<br>
+                8092&#32;
+                Zürich<br>
+            Schweiz<br>
+            </p>
+    <button class="contactbox__toggler">
+          <span aria-hidden="true" class="material-icons remove">remove</span> 
+          <span aria-hidden="true" class="material-icons add">add</span>
+          <span class="add">
+              Show more</span>
+          <span class="remove">
+              Show less</span>
+        </button>
+    </div>
+ </div>
+</div>
+</div>
+                            </div>
+                        </div>
+                </div>
+        </div>
+        
+
+
+    
+
+    <nav aria-labelledby="footer-departments-heading" class="footer__departments footer-accordion-mobile js-footer-accordion-mobile">
+        <div class="footer__section-title footer-accordion-mobile__trigger js-footer-accordion-mobile__trigger">
+            <h3 id="footer-departments-heading">
+                Departments
+            </h3>
+        </div>
+        <div class="footer__row footer-accordion-mobile__content">
+            <ul class="items">
+                
+                    
+                        
+                        
+                        <li class="item">
+                            <a href="https://arch.ethz.ch/en">
+                                <span class="item__title"> D-ARCH</span>
+                                <span class="item__subtitle">Architecture </span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://baug.ethz.ch/en/">
+                                <span class="item__title"> D-BAUG</span>
+                                <span class="item__subtitle">Civil, Environmental and Geomatic Engineering </span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://biol.ethz.ch/en/">
+                                <span class="item__title"> D-BIOL</span>
+                                <span class="item__subtitle">Biology </span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://bsse.ethz.ch/">
+                                <span class="item__title"> D-BSSE</span>
+                                <span class="item__subtitle">Biosystems Science and Engineering </span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://chab.ethz.ch/en/">
+                                <span class="item__title"> D-CHAB</span>
+                                <span class="item__subtitle">Chemistry and Applied Biosciences </span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://eaps.ethz.ch/en/">
+                                <span class="item__title"> D-EAPS</span>
+                                <span class="item__subtitle">Earth and Planetary Sciences </span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://gess.ethz.ch/en/">
+                                <span class="item__title"> D-GESS</span>
+                                <span class="item__subtitle">Humanities, Social and Political Sciences </span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://hest.ethz.ch/en">
+                                <span class="item__title"> D-HEST</span>
+                                <span class="item__subtitle">Health Sciences and Technology </span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://inf.ethz.ch/">
+                                <span class="item__title"> D-INFK</span>
+                                <span class="item__subtitle">Computer Science </span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://ee.ethz.ch/">
+                                <span class="item__title"> D-ITET</span>
+                                <span class="item__subtitle">Information Technology and Electrical Engineering </span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://math.ethz.ch/">
+                                <span class="item__title"> D-MATH</span>
+                                <span class="item__subtitle">Mathematics </span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://mat.ethz.ch/">
+                                <span class="item__title"> D-MATL</span>
+                                <span class="item__subtitle">Department of Materials </span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://mavt.ethz.ch/">
+                                <span class="item__title"> D-MAVT</span>
+                                <span class="item__subtitle">Mechanical and Process Engineering </span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://mtec.ethz.ch/">
+                                <span class="item__title"> D-MTEC</span>
+                                <span class="item__subtitle">Management, Technology and Economics </span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://www.phys.ethz.ch/">
+                                <span class="item__title"> D-PHYS</span>
+                                <span class="item__subtitle">Physics </span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://usys.ethz.ch/en/">
+                                <span class="item__title"> D-USYS</span>
+                                <span class="item__subtitle">Environmental Systems Science </span>
+                            </a>
+                        </li>
+                   
+                
+            </ul>
+        </div>
+    </nav>
+    <script>
+        jQuery(document).ready(function() {
+            var toggleAccordion = function(e) {
+                e.preventDefault();
+                $(e.target)
+                    .closest('.js-footer-accordion-mobile')
+                    .toggleClass('is-open-mobile');
+            };
+            $('.js-footer-accordion-mobile__trigger').on('click', toggleAccordion);
+        });
+    </script>
+<nav aria-labelledby="footer-resources-heading" class="footer__row footer__resources">
+                <h3 id="footer-resources-heading" class="visually-hidden">
+                  Table of contents and legal</h3>
+                <ul>
+                    <li><a href="/footer/sitemap.html" title="Sitemap"> Sitemap</a></li>
+                    <li><a href="/footer/imprint.html" title="Imprint"> Imprint</a></li>
+                    <li><a href="/footer/accessibility-statement.html" title="Accessibility Statement"> Accessibility Statement</a></li>
+                    <li><a href="/footer/disclaimer-copyright.html" title="Disclaimer &amp; Copyright"> Disclaimer &amp; Copyright</a></li>
+                    <li><a href="/footer/data-protection.html" title="Privacy Policy"> Privacy Policy</a></li>
+                    </ul>
+            </nav>
+        <div class="footer__copyright">
+            &copy; 2025 &nbsp;<a href="http://www.ethz.ch/">Eidgen&ouml;ssische
+                    Technische Hochschule Z&uuml;rich</a>
+        </div>
+    </div>
+</footer>
+</div>
+    
+    <!-- lightbox by photoswipe -->
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- access statistics -->
+    <!-- Access statistics -->
+        
+
+
+
+<div id="info-banner">JavaScript has been disabled in your browser</div></body>
+</html>
