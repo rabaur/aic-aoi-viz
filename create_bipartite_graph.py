@@ -38,7 +38,7 @@ def visualize_bipartite_graph(G: nx.Graph, output_path: Path = None):
     """
     pos = nx.kamada_kawai_layout(G)
 
-    plt.figure(figsize=(20, 20))
+    plt.figure(figsize=(30, 30))
 
     # Compute node degrees
     degrees = dict(G.degree())
